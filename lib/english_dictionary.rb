@@ -41,6 +41,6 @@ class EnglishDictionary
           end
         end
       end
-    translated_array.flatten.join(",").gsub(",","\n")
+    translated_array
   end
 end

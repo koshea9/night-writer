@@ -6,7 +6,7 @@ input_file.close
 english_dictionary = EnglishDictionary.new
 
 #need to write left to right vs. up/down
-translation = english_dictionary.lookup(incoming_text)
+translation = english_dictionary.translate_message(incoming_text)
 
 writer = File.open(ARGV[1], "w")
 writer.write(translation)

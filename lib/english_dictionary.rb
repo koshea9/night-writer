@@ -31,7 +31,16 @@ class EnglishDictionary
     }
   end
 
-  def lookup(letter)
-   @dictionary[letter].join(",").gsub(",","\n")
+  def translate_message(message)
+    message_array = message.split('')
+    translated_array = []
+    @dictionary.each do |key, value|
+      message_array.each do |character|
+          if character == key
+            translated_array << value
+          end
+        end
+      end
+    translated_array.flatten.join(",").gsub(",","\n")
   end
 end

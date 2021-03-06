@@ -3,7 +3,7 @@ class EnglishDictionary
     @dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
-      "c" => ["00", ".0", ".."],
+      "c" => ["00", "..", ".."],
       "d" => ["00", ".0", ".."],
       "e" => ["0.", ".0", ".."],
       "f" => ["00", "0.", ".."],
@@ -14,7 +14,7 @@ class EnglishDictionary
       "k" => ["0.", "..", "0."],
       "l" => ["0.", "0.", "0."],
       "m" => ["00", "..", "0."],
-      "n" => ["00", "0.", "0."],
+      "n" => ["00", ".0", "0."],
       "o" => ["0.", ".0", "0."],
       "p" => ["00", "0.", "0."],
       "q" => ["00", "00", "0."],
@@ -23,19 +23,20 @@ class EnglishDictionary
       "t" => [".0", "00", "0."],
       "u" => ["0.", "..", "00"],
       "v" => ["0.", "0.", "00"],
-      "w" => ["0.", "00", ".0"],
+      "w" => [".0", "00", ".0"],
       "x" => ["00", "..", "00"],
       "y" => ["00", ".0", "00"],
       "z" => ["0.", ".0", "00"],
-      " " => ["..", "..", ".."]
-    }
+      " " => ["..", "..", ".."],
+      "," => ["..", "0.", ".."]
+        }
   end
 
   def translate_message(message)
     message_array = message.split('')
     translated_array = []
+    message_array.each do |character|
     @dictionary.each do |key, value|
-      message_array.each do |character|
           if character == key
             translated_array << value
           end

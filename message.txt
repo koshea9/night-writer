@@ -1,1 +1,1 @@
-using echo to create and write from the command line
+hello world

@@ -15,4 +15,11 @@ class EnglishDictionaryTest < Minitest::Test
     expected = "0.\n00\n.."
     assert_equal expected, english_dictionary.lookup('h')
   end
+
+  def test_it_can_translate_message
+    english_dictionary = EnglishDictionary.new
+
+    expected = "0.\n00\n..0.\n.0\n..0.\n0.\n0.0.\n0.\n0.0.\n.0\n0."
+    assert_equal expected, english_dictionary.translate_message("hello")
+  end
 end

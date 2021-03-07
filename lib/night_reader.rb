@@ -2,6 +2,7 @@ require './lib/translator_to_english'
 
 input_file = File.read(ARGV[0])
 
+require "pry"; binding.pry
 translator_to_english = TranslatorToEnglish.new(input_file)
 
 translation_to_english = File.write(ARGV[1], translator_to_english.translate_braille_message)

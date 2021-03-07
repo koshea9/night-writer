@@ -1,4 +1,4 @@
-require_relative 'test_helper'
+require './test/test_helper'
 
 class TranslatorTest < Minitest::Test
 
@@ -21,7 +21,7 @@ class TranslatorTest < Minitest::Test
   def test_it_can_translate_multiple_letters
     translator = Translator.new("hello")
 
-    expected = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."],["0.", "0.", "0."], ["0.", ".0", "0."]]
+    expected = [["0.", "00", ".."], ["0.", "00", ".."], ["0.", "0.", "0."],["0.", "0.", "0."], ["0.", ".0", "0."]]
     assert_equal expected, translator.translate_english_message
   end
 
@@ -35,14 +35,12 @@ class TranslatorTest < Minitest::Test
 
   def test_it_can_split_greater_than_80_over_multiple_lines
     translator = Translator.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    expected ="
-    0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
+    expected ="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
     ................................................................................
     ................................................................................
     0.
     ..
-    ..
-    "
+    .."
     assert_equal expected, translator.output_to_file
   end
 end

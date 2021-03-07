@@ -19,7 +19,7 @@ class Translator
 
   def braille_top
     output = ""
-    translate_english_message.each_with_index do |braille, index|
+    translate_english_message.each do |braille|
         output << braille[0]
       end
       output
@@ -27,7 +27,7 @@ class Translator
 
   def braille_middle
     output = ""
-    translate_english_message.each_with_index do |braille, index|
+    translate_english_message.each do |braille|
         output << braille[1]
       end
     output
@@ -35,7 +35,7 @@ class Translator
 
   def braille_bottom
     output = ""
-    translate_english_message.each_with_index do |braille, index|
+    translate_english_message.each do |braille|
         output << braille[2]
     end
     output

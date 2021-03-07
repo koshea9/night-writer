@@ -18,11 +18,31 @@ class TranslatorTest < Minitest::Test
     assert_equal expected2, translator2.translate_english_message
   end
 
-  def test_it_can_translate_message
+  def test_it_can_translate_multiple_letters
     translator = Translator.new("hello")
 
     expected = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."],["0.", "0.", "0."], ["0.", ".0", "0."]]
     assert_equal expected, translator.translate_english_message
   end
 
+  def test_it_can_break_up_braille_into_top_middle_bottom
+    translator = Translator.new("hello")
+
+    assert_equal "0.0.0.0.0.", translator.braille_top
+    assert_equal "00.00.0..0", translator.braille_middle
+    assert_equal "....0.0.0.", translator.braille_bottom
+  end
+
+  def test_it_can_split_greater_than_80_over_multiple_lines
+    translator = Translator.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    expected ="
+    0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
+    ................................................................................
+    ................................................................................
+    0.
+    ..
+    ..
+    "
+    assert_equal expected, translator.output_to_file
+  end
 end

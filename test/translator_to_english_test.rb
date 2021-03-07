@@ -11,9 +11,7 @@ class TranslatorToEnglishTest < Minitest::Test
   end
 
   def test_it_can_translate_single_character
-    translator_to_english = TranslatorToEnglish.new("0.
-    ..
-    ..")
+    translator_to_english = TranslatorToEnglish.new("0.\n..\n..")
 
     assert_equal "a", translator_to_english.translate_braille_message
   end

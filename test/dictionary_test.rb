@@ -1,25 +1,21 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/english_dictionary'
+require_relative 'test_helper'
 
-class EnglishDictionaryTest < Minitest::Test
+class DictionaryTest < Minitest::Test
 
   def test_it_exists
-    english_dictionary = EnglishDictionary.new
-    assert_instance_of EnglishDictionary, english_dictionary
+    dictionary = Dictionary.new
+    assert_instance_of Dictionary, dictionary
   end
 
-  def test_it_can_translate_single_letter
-    english_dictionary = EnglishDictionary.new
+  def test_it_can_lookup_english_value
+    dictionary = Dictionary.new
 
-    expected =[["0.", "..", ".."]]
-    assert_equal expected, english_dictionary.translate_message("a")
+    assert_equal ["0.", "00", ".."], dictionary.english_dictionary["h"]
   end
 
-  def test_it_can_translate_message
-    english_dictionary = EnglishDictionary.new
+  def test_it_can_lookup_braille_value
+    dictionary = Dictionary.new
 
-    expected = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."],["0.", "0.", "0."], ["0.", ".0", "0."]]
-    assert_equal expected, english_dictionary.translate_message("hello")
+    assert_equal "h", dictionary.braille_dictionary[["0.", "00", ".."]]
   end
 end

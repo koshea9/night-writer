@@ -8,6 +8,7 @@ class Translator
     @dictionary = Dictionary.new
     @english_dictionary = dictionary.english_dictionary
     @message = message
+    @line_break_length = 0..79
   end
 
   def translate_english_message
@@ -46,9 +47,9 @@ class Translator
     row2 = braille_middle
     row3 = braille_bottom
     until row1.length == 0
-      output << row1.slice!(0..79) + "\n"
-      output << row2.slice!(0..79) + "\n"
-      output << row3.slice!(0..79) + "\n"
+      output << row1.slice!(@line_break_length) + "\n"
+      output << row2.slice!(@line_break_length) + "\n"
+      output << row3.slice!(@line_break_length) + "\n"
     end
     output.join
   end

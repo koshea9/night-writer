@@ -11,8 +11,7 @@ class TranslatorToEnglish
   end
 
   def translate_single_braille_character
-    @braille_dictionary[@message]
-    require "pry"; binding.pry
+    @braille_dictionary[@message.gsub("\n", "")]
   end
 
   def format_braille_message
@@ -39,5 +38,13 @@ class TranslatorToEnglish
       translated << @braille_dictionary[character]
       end
     translated
+  end
+
+  def output_to_file
+    if @message.gsub("\n", "").length == 6
+      translate_single_braille_character
+    else
+      translate_braille_message
+    end
   end
 end

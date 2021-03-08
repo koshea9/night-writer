@@ -23,8 +23,8 @@ class Translator
     translate_english_message.each do |braille|
         output << braille[0]
       end
-      output
-    end
+    output
+  end
 
   def braille_middle
     output = ""

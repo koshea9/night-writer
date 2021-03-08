@@ -1,7 +1,7 @@
 class Dictionary
 
   def english_dictionary
-    dictionary = {
+        {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],

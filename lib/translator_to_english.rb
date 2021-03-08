@@ -15,6 +15,12 @@ class TranslatorToEnglish
   end
 
   def format_braille_message
+    length = @message.gsub("\n", "").length
+    row_length = length / 3
+    
+    row1 = 0..(row_length - 1)
+    row2 = (row_length + 1)..(ro)
+  require "pry"; binding.pry
     array = @message.split("\n")
     collect = []
     array.each do |line|

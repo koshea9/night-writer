@@ -34,6 +34,11 @@ class Dictionary
   end
 
   def braille_dictionary
-    english_dictionary.invert
+    braille = english_dictionary.invert
+    keys_to_strings = {}
+    braille.each do |key, value|
+      keys_to_strings[key.join] = value
+    end
+    keys_to_strings
   end
 end

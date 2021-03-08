@@ -15,9 +15,9 @@ class TranslatorToEnglishTest < Minitest::Test
   end
 
   def test_it_can_format_braille_message_to_match_characters
-    translator_to_english = TranslatorToEnglish.new("0.0.0.0.\n00.00.0..0\n....0.0.0.\n")
+    translator_to_english = TranslatorToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
 
-    assert_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00."], translator_to_english.format_braille_message
+    assert_equal ["0.00..","0..0..","0.0.0.","0.0.0.","0..00.","......",".000.0","0..00.","0.000.","0.0.0.","00.0.."], translator_to_english.format_braille_message
   end
 
   def test_it_can_convert_multipe_braille_characters_to_english

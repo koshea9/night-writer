@@ -21,9 +21,10 @@ class TranslatorToEnglishTest < Minitest::Test
   end
 
   def test_it_can_convert_multipe_braille_characters_to_english
+    # skip
     # use formatted text above to iterate over dictionary - what to do when character count is >80 or >3 line breaks...
-    translator_to_english = TranslatorToEnglish.new("0.0.0.0.0.\n00.00.0..0\n....0.0.0.\n")
+    translator_to_english = TranslatorToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
 
-    assert_equal "hello", translator_to_english.translate_braille_message
+    assert_equal "hello world", translator_to_english.translate_braille_message
   end
 end

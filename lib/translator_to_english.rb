@@ -27,9 +27,16 @@ class TranslatorToEnglish
       to_translate << row1.slice!(0..1)
       to_translate << row2.slice!(0..1)
       to_translate << row3.slice!(0..1)
+      end
     end
+    to_translate.join.scan(/.{6}/)
   end
-  to_translate.join.scan(/.{6}/)
-end
 
+  def translate_braille_message
+    translated = ""
+    format_braille_message.each do |character|
+    translated << @braille_dictionary[character]
+    end
+    translated
+  end
 end

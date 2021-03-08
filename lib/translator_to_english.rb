@@ -10,22 +10,22 @@ class TranslatorToEnglish
     @braille_dictionary = dictionary.braille_dictionary
   end
 
-    def translate_braille_message
-      @braille_dictionary[@message.split]
+  def translate_single_braille_character
+    @braille_dictionary[@message.split]
+  end
+
+  def format_braille_message
+    array = @message.split("\n")
+    collect = []
+    array.each do |line|
+      collect << line[0..1]
     end
-
-  def top_braille_message
-    array = message.scan(/.{6}/)
-    top = array [0]
-  end
-
-  def middle_braille_message
-    array = message.scan(/.{6}/)
-    top = array [1]
-  end
-
-  def bottom_braille_message
-    array = message.scan(/.{6}/)
-    top = array [2]
-  end
+    array.each do |line|
+      collect << line[2..3]
+    end
+    array.each do |line|
+      collect << line[4..6]
+    end
+    collect.join.scan(/.{6}/)
+    end
 end

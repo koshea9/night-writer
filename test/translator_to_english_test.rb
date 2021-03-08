@@ -21,10 +21,10 @@ class TranslatorToEnglishTest < Minitest::Test
   end
 
   def test_it_can_convert_multipe_braille_characters_to_english
-    # skip
-    # use formatted text above to iterate over dictionary - what to do when character count is >80 or >3 line breaks...
-    translator_to_english = TranslatorToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+    translator_to_english1 = TranslatorToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+    # translator_to_english2 = TranslatorToEnglish.new("0.0000...00....00...0..000.0..0.0.0...000.0.0..0..000..0...00....00.0..0...0.00.\n...0.0..0..0..00.0..0.0.0.00...0..00..00...0.00....0.000..00.0..0000..00..0.00..\n..0.....0.0....0....0.....0...0.000.......00..0...0.0.0...0.0....0....0...0.0...\n0000.0..0.0..0.00.0.00..0..0..0.0..0...00.0..0...0.00.0000.0..0.0.000.0.0...0..0\n.0.00...0..00000.0.0.0....0...0...00..0000..00..0.00...0.00...0..00..000.0....0.\n0...0.......0..0....0...000.....000....0....0...0.0...0...0.........0.0.....000.\n")
 
-    assert_equal "hello world", translator_to_english.translate_braille_message
+    assert_equal "hello world", translator_to_english1.translate_braille_message
+    # assert_equal "and so we lift our gazes not to what stands between us but what stands before us", translator_to_english2.translate_braille_message
   end
 end

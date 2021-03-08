@@ -11,7 +11,8 @@ class TranslatorToEnglish
   end
 
   def translate_single_braille_character
-    @braille_dictionary[@message.split]
+    @braille_dictionary[@message]
+    require "pry"; binding.pry
   end
 
   def format_braille_message
@@ -35,8 +36,8 @@ class TranslatorToEnglish
   def translate_braille_message
     translated = ""
     format_braille_message.each do |character|
-    translated << @braille_dictionary[character]
-    end
+      translated << @braille_dictionary[character]
+      end
     translated
   end
 end

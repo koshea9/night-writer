@@ -15,7 +15,7 @@ class TranslatorToEnglish
   end
 
   def format_braille_message
-    length = @message.gsub("\n", "").length
+    length = message_length
     row_length = length / 3
     rows = @message.lines[0..(row_length - 1)]
     row1 = rows[0]
@@ -41,10 +41,14 @@ class TranslatorToEnglish
   end
 
   def output_to_file
-    if @message.gsub("\n", "").length == 6
+    if message_length == 6
       translate_single_braille_character
     else
       translate_braille_message
     end
+  end
+
+  def message_length
+    @message.gsub("\n", "").length
   end
 end

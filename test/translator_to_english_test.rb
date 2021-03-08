@@ -33,4 +33,12 @@ class TranslatorToEnglishTest < Minitest::Test
 
     assert_equal "h", translator_to_english.output_to_file
   end
+
+  def test_it_can_return_length_excluding_line_breaks
+    translator_to_english1 = TranslatorToEnglish.new("0.\n00\n..")
+    translator_to_english2 = TranslatorToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+
+    assert_equal 6, translator_to_english1.message_length
+    assert_equal 66, translator_to_english2.message_length
+  end
 end

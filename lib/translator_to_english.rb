@@ -15,14 +15,12 @@ class TranslatorToEnglish
   end
 
   def format_braille_message
-    length = message_length
-    row_length = length / 3
-    rows = @message.lines[0..(row_length - 1)]
+    rows = @message.split()
     row1 = rows[0]
     row2 = rows[1]
     row3 = rows[2]
     to_translate = []
-    until row1.empty?
+    until row3.empty?
     rows.each do |row|
       to_translate << row1.slice!(0..1)
       to_translate << row2.slice!(0..1)

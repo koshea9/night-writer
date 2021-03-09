@@ -10,10 +10,6 @@ class TranslatorToEnglish
     @braille_dictionary = dictionary.braille_dictionary
   end
 
-  def translate_single_braille_character
-    @braille_dictionary[@message.gsub("\n", "")]
-  end
-
   def format_braille_message
     rows = @message.split()
     row1 = rows[0]
@@ -36,17 +32,5 @@ class TranslatorToEnglish
       translated << @braille_dictionary[character]
       end
     translated
-  end
-
-  def output_to_file
-    if message_length == 6
-      translate_single_braille_character
-    else
-      translate_braille_message
-    end
-  end
-
-  def message_length
-    @message.gsub("\n", "").length
   end
 end

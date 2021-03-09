@@ -1,7 +1,5 @@
 require './test/test_helper'
-
 class TranslatorTest < Minitest::Test
-
   def test_it_exists
     translator = Translator.new("hello")
 
@@ -33,7 +31,7 @@ class TranslatorTest < Minitest::Test
     assert_equal "....0.0.0.", translator.braille_bottom
   end
 
-  def test_it_can_split_greater_than_80_over_multiple_lines
+  def test_it_can_format_output_to_add_line_break_at_80_braille_characters
     translator = Translator.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     expected ="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"
     assert_equal expected, translator.output_to_file

@@ -1,5 +1,4 @@
 require './lib/translator_to_english'
-
 input_file = File.read(ARGV[0])
 
 translator_to_english = TranslatorToEnglish.new(input_file)

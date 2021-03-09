@@ -1,5 +1,4 @@
 require './lib/translator'
-
 input_file = File.read(ARGV[0]).chomp.downcase
 
 translator = Translator.new(input_file)

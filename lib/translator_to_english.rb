@@ -1,13 +1,11 @@
 require './lib/dictionary'
-
 class TranslatorToEnglish
   attr_reader :message,
               :dictionary
 
   def initialize(message)
     @message = message.split()
-    @dictionary = Dictionary.new
-    @braille_dictionary = dictionary.braille_dictionary
+    @dictionary = Dictionary.new.braille_dictionary
   end
 
   def format_braille_message
@@ -27,8 +25,8 @@ class TranslatorToEnglish
   def translate_braille_message
     translated = ""
     format_braille_message.each do |character|
-      translated << @braille_dictionary[character]
-      end
+      translated << @dictionary[character]
+    end
     translated
   end
 

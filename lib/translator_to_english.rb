@@ -5,25 +5,23 @@ class TranslatorToEnglish
               :dictionary
 
   def initialize(message)
-    @message = message
+    @message = message.split()
     @dictionary = Dictionary.new
     @braille_dictionary = dictionary.braille_dictionary
   end
 
   def format_braille_message
-    rows = @message.split()
-    row1 = rows[0]
-    row2 = rows[1]
-    row3 = rows[2]
-    to_translate = []
-    until row3.empty?
-    rows.each do |row|
-      to_translate << row1.slice!(0..1)
-      to_translate << row2.slice!(0..1)
-      to_translate << row3.slice!(0..1)
-      end
+    top = top_character
+    middle = middle_character
+    bottom = bottom_character
+    full_character = [top, middle, bottom]
+    format_to_translate = []
+    until top.empty?
+      format_to_translate << top.slice!(0..1)
+      format_to_translate << middle.slice!(0..1)
+      format_to_translate << bottom.slice!(0..1)
     end
-    to_translate.join.scan(/.{6}/)
+    format_to_translate.join.scan(/.{6}/)
   end
 
   def translate_braille_message
@@ -32,5 +30,23 @@ class TranslatorToEnglish
       translated << @braille_dictionary[character]
       end
     translated
+  end
+
+  def top_character
+    @message.find_all.each_with_index do |character, index|
+      index % 3 == 0
+    end.join
+  end
+
+  def middle_character
+    @message.find_all.each_with_index do |character, index|
+      index % 3 == 1
+    end.join
+  end
+
+  def bottom_character
+    @message.find_all.each_with_index do |character, index|
+      index % 3 == 2
+    end.join
   end
 end

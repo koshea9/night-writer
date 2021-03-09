@@ -13,7 +13,6 @@ class Translator
 
   def translate_english_message
     @message.chars.map do |char|
-
       @english_dictionary[char]
     end
   end

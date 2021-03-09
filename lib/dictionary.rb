@@ -1,7 +1,7 @@
 class Dictionary
 
   def english_dictionary
-        {
+      {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],
@@ -30,7 +30,7 @@ class Dictionary
       "z" => ["0.", ".0", "00"],
       " " => ["..", "..", ".."],
       "," => ["..", "0.", ".."]
-        }
+      }
   end
 
   def braille_dictionary
